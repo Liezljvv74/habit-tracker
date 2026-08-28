@@ -65,6 +65,7 @@ h1 em { color: var(--green); font-weight: bold; }
 h2 { margin-bottom: 0; font-size: 31px; font-weight: normal; letter-spacing: -.02em; }
 .count-pill { padding: 7px 12px; color: var(--green-dark); background: #e6eadf; border-radius: 30px; font-family: 'Trebuchet MS', sans-serif; font-size: 12px; }
 .habit-list { display: grid; gap: 10px; }
+.tracker-body { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: start; gap: 18px; }
 .habit-card { min-height: 80px; gap: 16px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; box-shadow: var(--shadow); transition: transform .2s ease, border-color .2s ease; }
 .habit-card:hover { transform: translateY(-2px); border-color: #b5c3b5; }
 .complete-button { flex: 0 0 28px; width: 28px; height: 28px; padding: 0; border: 2px solid #bdc8bd; border-radius: 50%; background: transparent; }
@@ -108,9 +109,9 @@ h2 { margin-bottom: 0; font-size: 31px; font-weight: normal; letter-spacing: -.0
   .footer-note { margin-top: 52px; }
 }
 
-.congrats { position: fixed; right: 32px; top: 50%; z-index: 5; padding: 18px 24px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; box-shadow: var(--shadow); text-align: center; transform: translateY(-50%); }
+.congrats { display: grid; place-content: center; min-width: 256px; min-height: 148px; padding: 30px 26px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; box-shadow: var(--shadow); text-align: center; }
 .congrats[hidden] { display: none; }
-.congrats-text { margin: 0; font-size: 23px; line-height: 1.15; white-space: nowrap; }
+.congrats-text { margin: 0; font-size: 26px; line-height: 1.15; white-space: nowrap; }
 .congrats-text span { display: inline-block; animation: congrats-flicker 1.5s steps(1, end) infinite; animation-delay: calc(var(--i, 0) * -.11s); }
 
 @keyframes congrats-flicker {
@@ -130,6 +131,7 @@ h2 { margin-bottom: 0; font-size: 31px; font-weight: normal; letter-spacing: -.0
 }
 
 @media (max-width: 600px) {
-  .congrats { right: 14px; bottom: 14px; left: 14px; top: auto; padding: 13px 14px; transform: none; }
-  .congrats-text { font-size: 19px; }
+  .tracker-body { grid-template-columns: minmax(0, 1fr); }
+  .congrats { min-width: 0; min-height: 116px; padding: 24px 14px; }
+  .congrats-text { font-size: 21px; }
 }
