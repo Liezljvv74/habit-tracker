@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f1e8">
+  <title>Small Steps | Habit Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app-shell">
+    <header class="topbar">
+      <a class="wordmark" href="index.html" aria-label="Small Steps home">
+        <span class="wordmark-mark" aria-hidden="true">+</span>
+        <span>small steps</span>
+      </a>
+      <p class="today-label" id="todayLabel"></p>
+    </header>
+
+    <section class="intro" aria-labelledby="pageTitle">
+      <div>
+        <p class="eyebrow">Your daily rhythm</p>
+        <h1 id="pageTitle">A little progress<br><em>counts.</em></h1>
+        <p class="intro-copy">Keep the promises you make to yourself, one day at a time.</p>
+      </div>
+      <div class="progress-orbit" aria-label="Today's progress">
+        <div class="progress-ring" id="progressRing">
+          <strong id="progressPercent">0%</strong>
+          <span>today</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tracker-section" aria-labelledby="habitsHeading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Today</p>
+          <h2 id="habitsHeading">Your habits</h2>
+        </div>
+        <span class="count-pill" id="habitCount">0 habits</span>
+      </div>
+
+      <div class="habit-list" id="habitList" aria-live="polite"></div>
+
+      <div class="empty-state" id="emptyState" hidden>
+        <div class="empty-icon" aria-hidden="true">+</div>
+        <h3>Make space for a good habit</h3>
+        <p>Add your first habit below. It can be tiny. Tiny is how it sticks.</p>
+      </div>
+
+      <form class="add-form" id="addForm">
+        <label class="sr-only" for="habitName">New habit name</label>
+        <input id="habitName" name="habitName" type="text" maxlength="80" placeholder="What would you like to do daily?" autocomplete="off" required>
+        <button class="add-button" type="submit"><span aria-hidden="true">+</span> Add habit</button>
+      </form>
+    </section>
+
+    <footer class="footer-note"><span class="footer-dot" aria-hidden="true"></span> Progress is built one repeat at a time.</footer>
+  </main>
+
+  <template id="habitTemplate">
+    <article class="habit-card">
+      <button class="complete-button" type="button" data-action="toggle" aria-label="Mark habit complete"></button>
+      <div class="habit-details">
+        <h3 data-field="name"></h3>
+        <p data-field="status">Not done yet</p>
+      </div>
+      <div class="habit-actions">
+        <button class="icon-button" type="button" data-action="edit" aria-label="Rename habit" title="Rename habit">Edit</button>
+        <button class="icon-button delete-button" type="button" data-action="delete" aria-label="Delete habit" title="Delete habit">Delete</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
