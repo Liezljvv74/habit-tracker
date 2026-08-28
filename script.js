@@ -13,6 +13,8 @@ const progressPercent = document.querySelector('#progressPercent');
 const progressRing = document.querySelector('#progressRing');
 const todayLabel = document.querySelector('#todayLabel');
 const habitTemplate = document.querySelector('#habitTemplate');
+const congrats = document.querySelector('#congrats');
+const congratsText = document.querySelector('#congratsText');
 
 function today() {
   const date = new Date();
@@ -64,6 +66,19 @@ function render() {
   progressPercent.textContent = `${percentage}%`;
   progressRing.style.setProperty('--progress-angle', `${percentage * 3.6}deg`);
   progressRing.setAttribute('aria-label', `${percentage}% of today's habits complete`);
+  congrats.hidden = !(totalCount > 0 && completedCount === totalCount);
+}
+
+// Wrap each letter in its own span so the CSS flicker animation can stagger
+// the colour cycle one character at a time.
+function splitCongratsLetters() {
+  const letters = [...congratsText.textContent];
+  congratsText.replaceChildren(...letters.map((letter, index) => {
+    const span = document.createElement('span');
+    span.textContent = letter;
+    span.style.setProperty('--i', index);
+    return span;
+  }));
 }
 
 function addHabit(name) {
@@ -155,4 +170,5 @@ todayLabel.textContent = new Intl.DateTimeFormat('en-US', {
   day: 'numeric'
 }).format(new Date());
 
+splitCongratsLetters();
 render();

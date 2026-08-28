@@ -40,7 +40,14 @@
         <span class="count-pill" id="habitCount">0 habits</span>
       </div>
 
-      <div class="habit-list" id="habitList" aria-live="polite"></div>
+      <div class="tracker-body">
+        <div class="habit-list" id="habitList" aria-live="polite"></div>
+
+        <aside class="congrats" id="congrats" role="status" hidden>
+          <p class="sr-only">Congratulations, every habit is complete today.</p>
+          <p class="congrats-text" id="congratsText" aria-hidden="true">Congratulations</p>
+        </aside>
+      </div>
 
       <div class="empty-state" id="emptyState" hidden>
         <div class="empty-icon" aria-hidden="true">+</div>
