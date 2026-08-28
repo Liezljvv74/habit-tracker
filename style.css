@@ -107,3 +107,30 @@ h2 { margin-bottom: 0; font-size: 31px; font-weight: normal; letter-spacing: -.0
   .add-button { min-height: 47px; }
   .footer-note { margin-top: 52px; }
 }
+
+.congrats { position: fixed; right: 20px; top: 50%; z-index: 5; max-width: 156px; padding: 18px 14px; background: var(--card); border: 1px solid var(--line); border-radius: 3px; box-shadow: var(--shadow); text-align: center; transform: translateY(-50%); }
+.congrats[hidden] { display: none; }
+.congrats-text { overflow-wrap: anywhere; margin: 0 0 7px; font-size: 23px; line-height: 1.15; }
+.congrats-text span { display: inline-block; animation: congrats-flicker 1.5s steps(1, end) infinite; animation-delay: calc(var(--i, 0) * -.11s); }
+.congrats-note { margin: 0; color: var(--muted); font-family: 'Trebuchet MS', sans-serif; font-size: 11px; }
+
+@keyframes congrats-flicker {
+  0% { color: var(--green); opacity: 1; }
+  20% { color: var(--coral); opacity: .55; }
+  40% { color: var(--yellow); opacity: 1; }
+  60% { color: #4a7fb5; opacity: .6; }
+  80% { color: #9a5ba8; opacity: 1; }
+  100% { color: var(--green); opacity: .75; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .congrats-text span { animation: none; opacity: 1; }
+  .congrats-text span:nth-child(3n + 1) { color: var(--green); }
+  .congrats-text span:nth-child(3n + 2) { color: var(--coral); }
+  .congrats-text span:nth-child(3n) { color: #9a5ba8; }
+}
+
+@media (max-width: 600px) {
+  .congrats { right: 14px; bottom: 14px; left: 14px; top: auto; display: flex; align-items: baseline; justify-content: center; gap: 9px; max-width: none; padding: 12px 14px; transform: none; }
+  .congrats-text { margin: 0; font-size: 19px; }
+}
